@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src = {{url_for('static', filename='jquery.3.6.min.js')}}>
+</script> 
+<script src ={{url_for('static', filename='speedtest.js')}}>
+</script> 
+<style>
+    .head{
+        text-align: center;
+        font-size: 30px;
+        margin-top: 50px;
+        color: rgba(255, 255, 255, 0.756);
+    }
+    body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffe0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('../static/background.jpg');
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+    }
+    .container {
+    display: flex;
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+}
+    .result{
+        font-size: 20px;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bolder;
+        color: aliceblue;
+
+    }
+    #start-speed-test{
+        height: 60px;
+        width: 300px;
+        background-color: #515de860;
+        align-self: center;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba(255, 205, 7, 0.767);
+        font-size: 18px;
+        font-weight: bolder;
+    }
+    #start-speed-test:hover{
+        background-color: rgba(252, 218, 1, 0.572);
+    }
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>延迟测速</title>
+</head>
+<body>
+    {% include 'nav_bar.html' %}
+    <div class="container">
+    <h1 class="head">测速</h1>
+    <button id ="start-speed-test" onclick="test_n_speed(3)">开始测速</button>
+    <!-- <p class = "result">延迟:</p> -->
+    <p class = 'result' id="speed-test-result">延迟未测定</p>
+    </div>
+</body>
+</html>

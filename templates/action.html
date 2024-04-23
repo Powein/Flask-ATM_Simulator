@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src = {{url_for('static', filename='jquery.3.6.min.js')}}>
+</script> 
+<script src ={{url_for('static', filename='action.js')}}>
+</script> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+
+            font-family: Arial, sans-serif;
+            /* background-color: #ffffe0; */
+            background-color: #ffd90085;
+            background-image: url('../static/background.jpg');
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            
+            color: #ffffffb2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .atm-container {
+            /* background-color: white; */
+            border-radius: 5px;
+            /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); */
+            padding: 20px;
+            text-align: center;
+            width: 350px;
+            border-radius: 10px;
+
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .balance-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .username-display {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: transparent;
+            border: 3px solid #fff70041;
+            border-radius: 3px;
+            font-weight: bold;
+            color: white;
+            font-size: 20px;
+            text-decoration-color: aliceblue;
+        }
+
+        button {
+            width: 100px;
+            padding: 10px;
+            margin: 10px;
+            background-color: #9000ff87;
+            border: none;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .logout {
+            background-color: rgba(240, 6, 170, 0.465);
+        }
+
+        .logout:hover {
+            background-color: #e600ff6a;
+        }
+
+        button:hover {
+            background-color: #6200858b;
+        }
+
+        .not-logged-balance-display {
+            font-size: 1.2em;
+            color: #ff00008e;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .speed-test {
+            background-color: #ffc80080;
+            color: white;
+        }
+
+        .speed-test:hover {
+            background-color: #e6b4003e;
+            color: white;
+        }
+        
+    </style>
+    <title>ATM Management System</title>
+</head>
+<body class="body">
+    {% include 'nav_bar.html' %}
+    <div class="atm-container">
+        <h1>ATM管理系统</h1>
+        <!-- <div class="username-display">Welcome <span id="username">Kirisame</span></div> -->
+        {% if user %}
+        <div class="balance-display">当前余额:<span id="current-balance">{{ user.balance }}元</span></div>
+        <div class="username-display">欢迎登录,<span id="username">{{ user.username }}!</span></div>
+        {% else %}
+        <div class="not-logged-balance-display">当前未登录<span id="current-balance" color="red"></span></div>
+        <div class="username-display">您当前未登录,请先登录! <span id="username"></span></div>
+        {% endif %}
+        <input type="number" id="transaction-amount" placeholder="输入操作金额" required>
+        <div>
+            <button id="deposit">存钱</button>
+            <button id="withdraw">取钱</button>
+            <button id="transfer">转账</button>
+            <button id="log-button">历史记录</button>
+            <button class='logout' id="logout-button", onclick = logout()>登出</button>
+            <button class="speed-test" id="speed-test">网络测试</button>
+        </div>
+    </div>
+
+    <!-- 添加JavaScript以处理按钮功能及实时更新余额显示 -->
+    <!-- 实际应用中需要与后端接口通信 -->
+</body>
+</html>

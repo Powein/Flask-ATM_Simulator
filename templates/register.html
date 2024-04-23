@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+            font-family: Arial;
+            background-color: #ffffe0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('../static/background.jpg');
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+        }
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 5px;
+            /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.71);
+        }
+
+        label {
+            font-size: small;
+            display: block;
+            color:rgba(255, 255, 255, 0.676);
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 3px;
+            color:white;
+            background-color: transparent;
+            border: 3px solid #fff2006a;
+        }
+
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #f0da8ccd;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+            border: none;
+        }
+
+        button[type="sendCode"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #7823bdb5;
+            border-radius: 5px;
+            font-weight: bold;
+            color: white;
+            border: none;
+
+        }
+
+        button[type="sendCode"]:hover {
+            background-color: #410744a9;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #e0ca5eab;
+        }
+
+
+
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src = {{url_for('static', filename='jquery.3.6.min.js')}}>
+    </script> 
+    <script src ={{url_for('static', filename='register.js')}}>
+
+    </script>
+    <title>Register</title>
+</head>
+<body>
+    {% include 'nav_bar.html' %}
+    <div class="container">
+        <h1>注册</h1>
+        <form action="{{ url_for('register') }}" method="POST" action = "#">
+            <label for="username">用户名:</label>
+            <input class='input'type="text" id="username" name="username" required>
+            <br>
+            <label for="email">电子邮箱地址:</label>
+            <input class='input'type="email" id="email" name="email" required>
+            <br>
+            <label for="password">密码:</label>
+            <input class='input'type="password" id="password" name="password" required>
+            <br>
+            <label for="password">确认密码:</label>
+            <input class='input'type="password" id="password_confirm" name="password_confirm" required>
+            <br>
+            <label for="validate_code">验证码:</label>
+            <input class='input' type="text" id="captcha" name="captcha" required>
+            <br>
+            <button id= "sendCode" type="sendCode">发送验证码</button>
+            <br>
+            <button id= "submit" type="submit">注册</button>
+
+        </form>
+    </div>
+</body>
+</html>

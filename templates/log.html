@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-image: url('../static/magician.jpg');
+    background-size: 100%, auto;
+    background-repeat: repeat-y;
+}
+
+.atm-history {
+    list-style-type: none;
+    padding: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom: 3px solid #ffc8008a;
+    padding: 10px 0;
+    transition: background-color 0.2s ease;
+}
+
+.history-item:hover {
+    background-color: #2b01447d;
+}
+
+.item{
+    font-size: 16px;
+    width: 120px;
+    color: #ffffff;
+    font-weight: bolder;
+    margin-right: 20px;
+
+}
+
+.title{
+    text-align: center;
+    margin-top: 50px;
+    margin-left: 30%;
+    margin-right: 30%;
+    font-size: 50px;
+    border:  2px solid #530101de;
+    padding: 20px;
+    background-color: #f1e64e82;
+    color: #530101de;
+    border-radius: 10px;
+}
+.list-header {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 4px solid #be05fc9f;
+    padding: 10px 0;
+}
+.sort {
+    width: 120px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fafafadd;
+    border: blue;
+    background-color: transparent;
+}
+
+/* 
+.timestamp {
+    font-size: 16px;
+    width: auto;
+
+}
+
+.message {
+    width: auto;
+    font-size: 16px;
+    color: #555;
+
+}
+
+.reamaining-balance {
+    font-size: 16px;
+    width: auto;
+
+}
+
+.amount {
+    width: auto;
+    font-size: 16px;
+    color: #337ab7;
+
+} */
+
+</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM操作历史记录</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body>
+    {% include 'nav_bar.html' %}
+    <h1 class ="title">ATM操作历史记录</h1>
+    <ul class="atm-history">
+        <!-- 动态生成的操作历史列表 -->
+        <div class = 'list-header'>
+            <button class = 'sort'>操作时间</button>
+            <button class = 'sort'>操作后余额</button>
+            <button class = 'sort'>流水</button>
+            <button class = 'sort'>附加信息</button>
+        </div>
+        {% for operation in operations %}
+            <li class="history-item">
+                <span class="item">{{ operation.time }}</span>
+                <span class="item">{{ operation.balance }}</span>
+                <span class="item">{{ operation.amount }}</span>
+                <span class="item">{{ operation.message }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
